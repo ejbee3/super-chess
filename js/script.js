@@ -28,24 +28,24 @@ function preload() {
     height: 48,
   });
   this.load.svg("white rook", "assets/pieces/w_rook.svg", {
-    width: 48,
-    height: 48,
+    width: 52,
+    height: 52,
   });
   this.load.svg("white bishop", "assets/pieces/w_bishop.svg", {
-    width: 48,
-    height: 48,
+    width: 52,
+    height: 52,
   });
   this.load.svg("white horse", "assets/pieces/w_knight.svg", {
-    width: 48,
-    height: 48,
+    width: 52,
+    height: 52,
   });
   this.load.svg("white queen", "assets/pieces/w_queen.svg", {
-    width: 48,
-    height: 48,
+    width: 52,
+    height: 52,
   });
   this.load.svg("white king", "assets/pieces/w_king.svg", {
-    width: 48,
-    height: 48,
+    width: 52,
+    height: 52,
   });
 
   // black pieces
@@ -54,24 +54,24 @@ function preload() {
     height: 48,
   });
   this.load.svg("black rook", "assets/pieces/b_rook.svg", {
-    width: 48,
-    height: 48,
+    width: 52,
+    height: 52,
   });
   this.load.svg("black horse", "assets/pieces/b_knight.svg", {
-    width: 48,
-    height: 48,
+    width: 52,
+    height: 52,
   });
   this.load.svg("black bishop", "assets/pieces/b_bishop.svg", {
-    width: 48,
-    height: 48,
+    width: 52,
+    height: 52,
   });
   this.load.svg("black queen", "assets/pieces/b_queen.svg", {
-    width: 48,
-    height: 48,
+    width: 52,
+    height: 52,
   });
   this.load.svg("black king", "assets/pieces/b_king.svg", {
-    width: 48,
-    height: 48,
+    width: 52,
+    height: 52,
   });
 }
 
@@ -88,39 +88,39 @@ function create() {
   let wpx = 8;
   let wpy = 392;
 
-  let wrx = 8;
-  let wry = 456;
+  let wrx = 6;
+  let wry = 454;
 
-  let whx = 72;
-  let why = 456;
+  let whx = 70;
+  let why = 454;
 
-  let wbx = 136;
-  let wby = 456;
+  let wbx = 134;
+  let wby = 454;
 
-  let wqx = 200;
-  let wqy = 456;
+  let wqx = 198;
+  let wqy = 454;
 
-  let wkx = 264;
-  let wky = 456;
+  let wkx = 262;
+  let wky = 454;
 
   // black side
   let bpx = 8;
   let bpy = 72;
 
   let brx = 8;
-  let bry = 8;
+  let bry = 6;
 
   let bhx = 72;
-  let bhy = 8;
+  let bhy = 6;
 
   let bbx = 136;
-  let bby = 8;
+  let bby = 6;
 
   let bqx = 200;
-  let bqy = 8;
+  let bqy = 6;
 
   let bkx = 264;
-  let bky = 8;
+  let bky = 6;
 
   // making board
   let offset = false;
