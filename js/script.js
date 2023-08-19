@@ -82,7 +82,10 @@ function create() {
   let dby = 0;
   let lby = 0;
 
-  // piece coordinates
+  // pieces
+
+  let white_pieces = [{ p: [] }, { r: [] }, { h: [] }, { b: [] }];
+  let black_pieces = [{ p: [] }, { r: [] }, { h: [] }, { b: [] }];
 
   // white side
   let wpx = 8;
@@ -145,13 +148,43 @@ function create() {
 
   // putting pieces on board
   for (let i = 0; i < 2; i++) {
-    this.add.image(brx, bry, "black rook").setOrigin(0, 0);
-    this.add.image(bbx, bby, "black bishop").setOrigin(0, 0);
-    this.add.image(bhx, bhy, "black horse").setOrigin(0, 0);
-
-    this.add.image(whx, why, "white horse").setOrigin(0, 0);
-    this.add.image(wrx, wry, "white rook").setOrigin(0, 0);
-    this.add.image(wbx, wby, "white bishop").setOrigin(0, 0);
+    let obj = {};
+    obj["r" + (i + 1)] = this.add
+      .image(brx, bry, "black rook")
+      .setOrigin(0, 0)
+      .setInteractive();
+    black_pieces[1].r.push(obj);
+    obj = {};
+    obj["b" + (i + 1)] = this.add
+      .image(bbx, bby, "black bishop")
+      .setOrigin(0, 0)
+      .setInteractive();
+    black_pieces[3].b.push(obj);
+    obj = {};
+    obj["h" + (i + 1)] = this.add
+      .image(bhx, bhy, "black horse")
+      .setOrigin(0, 0)
+      .setInteractive();
+    black_pieces[2].h.push(obj);
+    obj = {};
+    obj["h" + (i + 1)] = this.add
+      .image(whx, why, "white horse")
+      .setOrigin(0, 0)
+      .setInteractive();
+    white_pieces[2].h.push(obj);
+    obj = {};
+    obj["r" + (i + 1)] = this.add
+      .image(wrx, wry, "white rook")
+      .setOrigin(0, 0)
+      .setInteractive();
+    white_pieces[1].r.push(obj);
+    obj = {};
+    obj["b" + (i + 1)] = this.add
+      .image(wbx, wby, "white bishop")
+      .setOrigin(0, 0)
+      .setInteractive();
+    white_pieces[3].b.push(obj);
+    obj = {};
 
     brx += 448;
     bhx += 320;
@@ -163,18 +196,39 @@ function create() {
   }
 
   for (let i = 0; i < 8; i++) {
-    this.add.image(bpx, bpy, "black pawn").setOrigin(0, 0);
-    this.add.image(wpx, wpy, "white pawn").setOrigin(0, 0);
+    let obj = {};
+    obj["p" + (i + 1)] = this.add
+      .image(bpx, bpy, "black pawn")
+      .setOrigin(0, 0)
+      .setInteractive();
+    black_pieces[0].p.push(obj);
+    obj = {};
+    obj["p" + (i + 1)] = this.add
+      .image(wpx, wpy, "white pawn")
+      .setOrigin(0, 0)
+      .setInteractive();
+    white_pieces[0].p.push(obj);
+    obj = {};
 
     bpx += 64;
     wpx += 64;
   }
 
-  this.add.image(bqx, bqy, "black queen").setOrigin(0, 0);
-  this.add.image(bkx, bky, "black king").setOrigin(0, 0);
+  black_pieces.push({
+    q: this.add.image(bqx, bqy, "black queen").setOrigin(0, 0).setInteractive(),
+  });
+  black_pieces.push({
+    k: this.add.image(bkx, bky, "black king").setOrigin(0, 0).setInteractive(),
+  });
 
-  this.add.image(wqx, wqy, "white queen").setOrigin(0, 0);
-  this.add.image(wkx, wky, "white king").setOrigin(0, 0);
+  white_pieces.push({
+    q: this.add.image(wqx, wqy, "white queen").setOrigin(0, 0).setInteractive(),
+  });
+  white_pieces.push({
+    k: this.add.image(wkx, wky, "white king").setOrigin(0, 0).setInteractive(),
+  });
+
+  console.log(white_pieces[2]);
 }
 
 function update() {}
