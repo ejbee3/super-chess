@@ -1,0 +1,60 @@
+{ "compressionlevel":-1,
+ "height":8,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[9, 13, 9, 13, 9, 13, 9, 13,
+            13, 9, 13, 9, 13, 9, 13, 9,
+            9, 13, 9, 13, 9, 13, 9, 13,
+            13, 9, 13, 9, 13, 9, 13, 9,
+            9, 13, 9, 13, 9, 13, 9, 13,
+            13, 9, 13, 9, 13, 9, 13, 9,
+            9, 13, 9, 13, 9, 13, 9, 13,
+            13, 9, 13, 9, 13, 9, 13, 9],
+         "height":8,
+         "id":1,
+         "name":"Tile Layer 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":8,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":2,
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.10.2",
+ "tileheight":64,
+ "tilesets":[
+        
+        {
+         "firstgid":9,
+         "image": "\\\\wsl.localhost\\Ubuntu\\home\\joeba\\games\\super-chess\\assets\\board\\light_gray_square.png",
+         "imageheight": 128,
+         "imagewidth": 128,
+         "margin": 0,
+         "name": "light gray square",
+         "properties": {},
+         "spacing": 0,
+         "tileheight": 64,
+         "tilewidth": 64
+        }, 
+        {
+         "firstgid":13,
+         "image": "\\\\wsl.localhost\\Ubuntu\\home\\joeba\\games\\super-chess\\assets\\board\\dark_gray_square.png",
+         "imageheight": 128,
+         "imagewidth": 128,
+         "margin": 0,
+         "name": "dark gray square",
+         "properties": {},
+         "spacing": 0,
+         "tileheight": 64,
+         "tilewidth": 64
+        }],
+ "tilewidth":64,
+ "type":"map",
+ "version":"1.10",
+ "width":8
+}

@@ -12,15 +12,10 @@ var config = {
 var game = new Phaser.Game(config);
 
 function preload() {
-  // board squares
-  this.load.svg("dark brown square", "assets/squares/dark_brown.svg", {
-    width: 64,
-    height: 64,
-  });
-  this.load.svg("light brown square", "assets/squares/light_brown.svg", {
-    width: 64,
-    height: 64,
-  });
+  // chess board
+  this.load.tilemapTiledJSON("board", "assets/board/chess-board.json");
+  this.load.image("dark gray square", "assets/board/dark_gray_square.png");
+  this.load.image("light gray square", "assets/board/light_gray_square.png");
 
   // white pieces
   this.load.svg("white pawn", "assets/pieces/w_pawn.svg", {
@@ -76,13 +71,13 @@ function preload() {
 }
 
 function create() {
-  // square coordinates
-  let dbx = 64;
-  let lbx = 0;
-  let dby = 0;
-  let lby = 0;
-
-  // pieces
+  //make board
+  const board = this.make.tilemap({
+    key: "board",
+  });
+  const dgs = board.addTilesetImage("dark gray square", null, 64, 64, 0, 0, 13);
+  const lgs = board.addTilesetImage("light gray square", null, 64, 64, 0, 0, 9);
+  const layer = board.createDynamicLayer("Tile Layer 1", [lgs, dgs], 0, 0);
 
   let white_pieces = [{ p: [] }, { r: [] }, { h: [] }, { b: [] }];
   let black_pieces = [{ p: [] }, { r: [] }, { h: [] }, { b: [] }];
@@ -124,27 +119,6 @@ function create() {
 
   let bkx = 264;
   let bky = 6;
-
-  // making board
-  let offset = false;
-  for (let i = 0; i < 8; i++) {
-    for (let j = 0; j < 4; j++) {
-      this.add.image(dbx, dby, "dark brown square").setOrigin(0, 0);
-      this.add.image(lbx, lby, "light brown square").setOrigin(0, 0);
-      dbx += 128;
-      lbx += 128;
-    }
-    dby += 64;
-    lby += 64;
-    offset = !offset;
-    if (offset) {
-      dbx = 0;
-      lbx = 64;
-    } else {
-      dbx = 64;
-      lbx = 0;
-    }
-  }
 
   // putting pieces on board
   for (let i = 0; i < 2; i++) {
@@ -228,7 +202,13 @@ function create() {
     k: this.add.image(wkx, wky, "white king").setOrigin(0, 0).setInteractive(),
   });
 
-  console.log(white_pieces[2]);
+  const tile = layer.getTileAtWorldXY(
+    white_pieces[4].q.x,
+    white_pieces[4].q.y,
+    true
+  );
+
+  console.log(tile);
 }
 
 function update() {}
