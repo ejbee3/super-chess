@@ -202,13 +202,82 @@ function create() {
     k: this.add.image(wkx, wky, "white king").setOrigin(0, 0).setInteractive(),
   });
 
-  const tile = layer.getTileAtWorldXY(
-    white_pieces[4].q.x,
-    white_pieces[4].q.y,
-    true
-  );
+  // const tile = layer.getTileAtWorldXY(
+  //   white_pieces[4].q.x,
+  //   white_pieces[4].q.y,
+  //   true
+  // );
 
-  console.log(tile);
+  let draggables = [];
+  let piece_indices = {};
+  let offset = 0;
+
+  for (let j = 0; j < black_pieces[0].p.length; j++) {
+    draggables.push(black_pieces[0].p[j]["p" + (j + 1)]);
+    piece_indices["bp" + (j + 1)] = 13 + j + offset;
+
+    draggables.push(white_pieces[0].p[j]["p" + (j + 1)]);
+    piece_indices["wp" + (j + 1)] = 14 + j + offset;
+    offset += 1;
+  }
+
+  offset = 0;
+
+  for (let i = 0; i < black_pieces[1].r.length; i++) {
+    draggables.push(black_pieces[1].r[i]["r" + (i + 1)]);
+    piece_indices["br" + (i + 1)] = 1 + offset;
+    draggables.push(black_pieces[2].h[i]["h" + (i + 1)]);
+    piece_indices["bh" + (i + 1)] = 3 + offset;
+    draggables.push(black_pieces[3].b[i]["b" + (i + 1)]);
+    piece_indices["bb" + (i + 1)] = 2 + offset;
+
+    draggables.push(white_pieces[1].r[i]["r" + (i + 1)]);
+    piece_indices["wr" + (i + 1)] = 5 + offset;
+    draggables.push(white_pieces[2].h[i]["h" + (i + 1)]);
+    piece_indices["wh" + (i + 1)] = 4 + offset;
+    draggables.push(white_pieces[3].b[i]["b" + (i + 1)]);
+    piece_indices["wb" + (i + 1)] = 6 + offset;
+
+    offset += 6;
+  }
+
+  draggables.push(black_pieces[4].q);
+  piece_indices.bq = 29;
+  draggables.push(black_pieces[5].k);
+  piece_indices.bk = 30;
+
+  draggables.push(white_pieces[4].q);
+  piece_indices.wq = 31;
+  draggables.push(white_pieces[5].k);
+  piece_indices.wk = 32;
+
+  this.input.setDraggable(draggables);
+
+  let index;
+
+  this.input.on("dragstart", (pointer, gameObject) => {
+    index = this.children.getIndex(gameObject);
+
+    this.children.bringToTop(gameObject);
+  });
+
+  this.input.on("drag", (pointer, gameObject, dragX, dragY) => {
+    gameObject.x = dragX;
+    gameObject.y = dragY;
+  });
+
+  this.input.on("dragend", (pointer, gameObject) => {
+    this.children.moveTo(gameObject, index);
+    console.log(index);
+  });
+
+  // const tile = layer.getTileAtWorldXY(
+  //   white_pieces[4].q.x,
+  //   white_pieces[4].q.y,
+  //   true
+  // );
+
+  console.log(piece_indices);
 }
 
 function update() {}
